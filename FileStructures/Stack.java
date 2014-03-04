@@ -12,7 +12,7 @@ public class Stack<T>
         stack.add(value);
     }
     
-    // Return top item.
+    // Return top item.  Remove the top element in the stack
     // Throws java.util.EmptyStackException if stack
     // is empty.
     public T pop()
@@ -23,7 +23,11 @@ public class Stack<T>
         }
         else
         {
-            return stack.get(stack.size() - 1);
+            T value = stack.get(stack.size() - 1);
+            
+            stack.remove();
+            
+            return value;
         }
     }
     
@@ -35,7 +39,7 @@ public class Stack<T>
         }
         else
         {
-            return null;
+            return stack.get(stack.size() - 1);
         }
     }
     
