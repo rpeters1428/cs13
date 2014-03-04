@@ -17,12 +17,26 @@ public class Stack<T>
     // is empty.
     public T pop()
     {
-        return null;
+        if(isEmpty() == true)
+        {
+            throw new java.util.EmptyStackException();
+        }
+        else
+        {
+            return stack.get(stack.size() - 1);
+        }
     }
     
     public T peek()
     {
-        return null;
+        if(isEmpty() == true)
+        {
+            throw new java.util.EmptyStackException();
+        }
+        else
+        {
+            return null;
+        }
     }
     
     public void clear()
@@ -40,5 +54,15 @@ public class Stack<T>
         {
             return false;
         }
+    }
+    
+    public String print()
+    {
+        return stack.toString();
+    }
+    
+    public int size()
+    {
+        return stack.size();
     }
 }
