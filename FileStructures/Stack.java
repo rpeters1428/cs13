@@ -4,7 +4,7 @@ public class Stack<T>
     
     public Stack()
     {
-        stack = new BetterArray<T>();
+        stack = new LList<T>();
     }
     
     public void push(T value)
