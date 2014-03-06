@@ -33,4 +33,20 @@ public class StackTest
         assertEquals("hello", s.pop());
         assertEquals("goodbye", s.pop());
     }
+    
+    @Test
+    public void testPush()
+    {
+        Stack<String> s = new Stack<String>();
+        s.push("goodbye");
+        assertEquals("goodbye", s.peek());
+        s.push("hello");
+        assertEquals("hello", s.peek());
+        s.push("Sierra");
+        assertEquals("Sierra", s.peek());
+        s.push("Science");
+        assertEquals("Science", s.peek());
+    }
+    
+    
 }
