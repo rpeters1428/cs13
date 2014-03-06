@@ -23,7 +23,7 @@ public class Stack<T>
         }
         else
         {
-            T value = stack.get(stack.size() - 1);
+            T value = stack.get(0);
             
             stack.remove();
             
@@ -39,7 +39,7 @@ public class Stack<T>
         }
         else
         {
-            return stack.get(stack.size() - 1);
+            return stack.get(0);
         }
     }
     

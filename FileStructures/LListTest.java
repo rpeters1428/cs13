@@ -206,7 +206,7 @@ public class LListTest
     {
         LList<String> x = new LList<String>();
         x.add("Ryan");
-        x.insert("Nope", -1);
+        x.insert(-1, "Nope");
     }
     // Test insert()
     @Test
@@ -217,7 +217,7 @@ public class LListTest
         x.add("Sue");
         x.add("Jane");
         x.add("Bob");
-        x.insert("Tom", 2);
+        x.insert(2, "Tom");
         assertEquals(" 0:Bob 1:Jane 2:Tom 3:Sue 4:Jim", x.toString());
     }
     // Test to insert() at the beginning/head of the list
@@ -227,7 +227,7 @@ public class LListTest
         LList<String> x = new LList<String>();
         x.add("Jim");
         x.add("Sue");
-        x.insert("Bob", 0);
+        x.insert(0, "Bob");
         assertEquals(" 0:Bob 1:Sue 2:Jim", x.toString());
     }
     // Test to insert() at the end/tail of the list
@@ -237,7 +237,7 @@ public class LListTest
         LList<String> x = new LList<String>();
         x.add("Jim");
         x.add("Sue");
-        x.insert("Bob", 2);
+        x.insert(2, "Bob");
         assertEquals(" 0:Sue 1:Jim 2:Bob", x.toString());
     }
     // Test delete()
