@@ -48,5 +48,49 @@ public class StackTest
         assertEquals("Science", s.peek());
     }
     
+    @Test
+    public void testPop()
+    {
+        Stack<String> s = new Stack<String>();
+        s.push("goodbye");
+        s.push("James");
+        s.push("hello");
+        s.push("Sierra");
+        s.push("Science");
+        assertEquals("Science", s.pop());
+        assertEquals("Sierra", s.pop());
+        assertEquals("hello", s.pop());
+        assertEquals("James", s.pop());
+        assertEquals("goodbye", s.pop());
+        assertEquals(true, s.isEmpty());
+    }
     
+    @Test
+    public void testPeek()
+    {
+        Stack<String> s = new Stack<String>();
+        s.push("goodbye");
+        assertEquals("goodbye", s.peek());
+        s.push("James");
+        assertEquals("James", s.peek());
+        s.push("hello");
+        assertEquals("hello", s.peek());
+        s.push("Sierra");
+        assertEquals("Sierra", s.peek());
+        s.push("Science");
+        assertEquals("Science", s.peek());
+    }
+    
+    @Test
+    public void testClear()
+    {
+        Stack<String> s = new Stack<String>();
+        s.push("goodbye");
+        s.push("James");
+        s.push("hello");
+        s.push("Sierra");
+        s.push("Science");
+        s.clear();
+        assertEquals(true, s.isEmpty());
+    }
 }
