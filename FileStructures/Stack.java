@@ -6,7 +6,7 @@ public class Stack<T>
     {
         stack = new LList<T>();
     }
-    
+    // Put an element on top of the stack
     public void push(T value)
     {
         stack.add(value);
@@ -30,7 +30,8 @@ public class Stack<T>
             return value;
         }
     }
-    
+    // Peek at the top element of the stack and nothing below
+    // Throw exception if the stack is empty
     public T peek()
     {
         if(isEmpty() == true)
@@ -42,12 +43,12 @@ public class Stack<T>
             return stack.get(0);
         }
     }
-    
+    // Clear the stack and "start over"
     public void clear()
     {
         stack.clear();
     }
-    
+    // Check to see if the stack is empty.  If it is return true or false
     public boolean isEmpty()
     {
         if (stack.size() == 0)
@@ -58,15 +59,5 @@ public class Stack<T>
         {
             return false;
         }
-    }
-    
-    public String print()
-    {
-        return stack.toString();
-    }
-    
-    public int size()
-    {
-        return stack.size();
     }
 }
