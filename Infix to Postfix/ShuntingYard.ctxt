@@ -1,2 +1,10 @@
 #BlueJ class context
+<<<<<<< HEAD
+comment0.params=infix
+comment0.target=java.lang.String\ infix2postfix(java.lang.String)
+comment1.params=token
+comment1.target=int\ precedence(java.lang.String)
+numComments=2
+=======
 numComments=0
+>>>>>>> 44e403a4422f23c330b064b11b5a87ea05cec109
