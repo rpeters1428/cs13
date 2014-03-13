@@ -7,6 +7,7 @@
  */
 
 import java.util.Stack;
+import java.lang.Math;
 
 public class Postfix
 {
@@ -31,6 +32,27 @@ public class Postfix
                 double b = s.pop();
                 double diff = b - a;
                 s.push(diff);
+            }
+            else if (tokens[i].equals("*"))
+            {
+                double a = s.pop();
+                double b = s.pop();
+                double answer = a * b;
+                s.push(answer);
+            }
+            else if (tokens[i].equals("/"))
+            {
+                double a = s.pop();
+                double b = s.pop();
+                double divAns = b / a;
+                s.push(divAns);
+            }
+            else if (tokens[i].equals("^"))
+            {
+                double a = s.pop();
+                double b = s.pop();
+                double expAns = Math.pow(b, a);
+                s.push(expAns);
             }
             else 
             {

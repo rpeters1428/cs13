@@ -18,11 +18,13 @@ public class PostfixTest
     {
         Postfix p = new Postfix();
         assertEquals( 7.0  , p.eval("3 4 +"), 0.00001);
-        //assertEquals( 18.0  , p.eval("3 4 * 6 +"), 0.00001);
-        //assertEquals( 5.0 , p.eval("3 4 2 / +"), 0.00001);
+        assertEquals( 18.0  , p.eval("3 4 * 6 +"), 0.00001);
+        assertEquals( 5.0 , p.eval("3 4 2 / +"), 0.00001);
         assertEquals( -1.0 , p.eval("3 4 -"), 0.00001);
         assertEquals( -6.0 , p.eval("3 4 5 + -"), 0.00001);
         assertEquals( -11.14, p.eval("-3 -5 + 3.14 -"), 0.00001);
+        assertEquals( 65536.0 , p.eval("4 8 ^"), 0.000001);
+        assertEquals( 65524.86 , p.eval("-3 -5 + 3.14 - 4 8 ^ +"), 0.000001);
     }
 }
 
