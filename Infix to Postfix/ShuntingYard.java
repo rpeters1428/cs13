@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import java.util.Stack;
 import java.lang.Math;
 
@@ -14,16 +14,46 @@ public class ShuntingYard
         
         String[] tokens = infix.split(" ");
         Stack<String> s = new Stack<String>();
+        StringBuilder output = new StringBuilder();
         
         for(int i = 0; i < tokens.length; i++)
         {
-            
+            if(isNumber(tokens[i]) == true)
+            {
+                appendOutput(tokens[i]);
+            }
+            if(isOperator(tokens[i]) == true)
+            {
+                if(prec(tokens[i]) > prec(s.peek()))
+                {
+                    s.push(tokens[i]);
+                }
+                else
+                {
+                    while(prec(tokens[i]) >= prec(s.peek()))
+                    {
+                        String a = s.pop();
+                        appendOutput(a);
+                    }
+                }
+            }
+            if(tokens[i].equals("("))
+            {
+                s.push(tokens[i]);
+            }
+            if(tokens[i].equals(")"))
+            {
+                while(s.peek().equals("("))
+                {
+                    appendOutput(tokens[i]);
+                }
+                s.pop();
+            }
         }
-        
-        return "";
+        return output.toString();
     }
     
-    public int precedence(String token)
+    public int prec(String token)
     {
         if(token.equals("^"))
         {
@@ -46,10 +76,33 @@ public class ShuntingYard
             return 2;
         }
     }
-=======
-public class ShuntingYard
-{
     
+    private boolean isNumber(String token)
+    {
+        try{
+            int num = Integer.parseInt(token);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
     
->>>>>>> 44e403a4422f23c330b064b11b5a87ea05cec109
+    private boolean isOperator(String token)
+    {
+        try{
+            int num = Integer.parseInt(token);
+            return false;
+        } catch (NumberFormatException e) {
+            return true;
+        }
+    }
+    
+    private void appendOutput(String token)
+    {
+        String s = "";
+        for(int i = 0; i < 1; i++) {
+            s += ", " + i;
+        }
+        System.out.println(s);
+    }
 }
