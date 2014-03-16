@@ -2,98 +2,122 @@ import java.util.Stack;
 
 public class ShuntingYard
 {
-    public String infix2postfix(String infix)
+    // Convert infix to postfix
+    public static String infix2postfix(String infix) 
     {
-        String postfix = "";
-        
+        // Create anew stack, empty String and split String using spaces
+        Stack<String> s = new Stack<String>(); 
+         
+        String postfix = ""; 
+         
         String[] tokens = infix.split(" ");
-        Stack<String> s = new Stack<String>();
-        
-        for (int i = 0; i < tokens.length; i++)
+        // Loop through the expression of tokens using tokens.length
+        for (int i = 0; i < tokens.length; i++) 
         {
-            String c = tokens[i]; 
-            String o = "";
-            
-            if(isNumber(c))
-            {
-                postfix += c +" ";
-            }
-            else if (isNumber(c))
-            {
-                while (s.isEmpty() == false)
-                {
-                    o = s.pop();
-                    
-                    if (isHigher(c, o))
-                    {
-                        s.push(o); 
-                        break;
-                    }
-                    postfix += o +" ";
+            // Put the tokens[i] into a String a
+            String a = tokens[i]; 
+            String output = ""; 
+            // If the token is a Number Append to output
+            if (isNumb(a)) 
+            { 
+                postfix += a + " "; 
+            } 
+            // Else if it is a operator
+            else if (isOp(a)) 
+            { 
+                // While the Stack is not empty
+                while (s.isEmpty() == false) 
+                {   
+                    // Pop
+                    output = s.pop();
+                    // If precedence is higher 
+                    if (isHigher(a, output)) 
+                    { 
+                        // Push it to the output
+                        s.push(output); 
+                        break; 
+                    } 
+                    // Append to the output
+                    postfix += output + " "; 
+                } 
+                // Push it
+                s.push(a); 
+            } 
+            // If it is a "(" or ")"
+            else if (isParen(a)) 
+            { 
+                // If it is a ")"
+                if (a.equals(")")) 
+                { 
+                    // While the stack is not empty
+                    while (s.isEmpty() == false) 
+                    { 
+                        // Pop
+                        output = s.pop(); 
+                        // If the output equals "("
+                        if (output.equals("(")) 
+                        { 
+                            break; 
+                        } 
+                        // Append to the output
+                        postfix += output + " "; 
+                    } 
                 }
-                s.push(c); 
-            }
-            else if (isParen(c))
-            {
-                if (c.equals(")"))
-                {
-                    while (s.isEmpty() == false)
-                    {
-                        o = s.pop();
-                        if(s.equals("("))
-                        {
-                            o = s.pop();
-                        }
-                        postfix += o + " ";
-                    }
-                }
-                else
-                {
-                    s.push(c);
-                }
-            }
-        }
+                // Else push
+                else 
+                    s.push(a); 
+            } 
+        } 
+        // While it is not empty
         while (s.isEmpty() == false) 
         { 
+            // Pop and append to the output
             String o = s.pop(); 
             postfix += o + " "; 
-        }
+        } 
+        // Trim it and return the "answer"
         postfix = postfix.trim();
-        return postfix;
+        return postfix; 
     }
     
-    private boolean isOperand(String op) 
+    public static boolean isParen(String str) 
+    { 
+        return str.equals("(") || str.equals(")"); 
+    }
+    
+    public static boolean isNumb(String op) 
     { 
         try 
         { 
             Double.parseDouble(op); 
             return true; 
         } 
-        catch(NumberFormatException nfe) 
+        catch (NumberFormatException nfe) 
         { 
             return false; 
         } 
     } 
-    
-    private boolean isNumber(String op) 
+    public static boolean isOp(String str) 
     { 
-        return op.equals("+") || op.equals("-") || op.equals("*") || op.equals("/"); 
-    }
-    
-    private boolean isHigher(String op1, String op2) 
-    { 
-        if (op1.equals("*") || op1.equals("/")) 
-            if (op2.equals("+") || op2.equals("-"))        
-                return true; 
-         
-        if (op1.equals("*") || op1.equals("/") || op1.equals("+") || op1.equals("-")) 
-            if (op2.equals("("))        
-                return true; 
-         
-        return false; 
+        return str.equals("+") || str.equals("-") || str.equals("*") || str.equals("/"); 
     } 
-    private boolean isParen(String str) 
+    public static boolean isHigher(String str1, String str2) 
     { 
-        return str.equals("(") || str.equals(")"); 
-    }
+        if (str1.equals("*") || str1.equals("/")) 
+        {
+            if (str2.equals("+") || str2.equals("-")) 
+            {
+                return true;
+            }
+        }
+         
+        if (str1.equals("*") || str1.equals("/") || str1.equals("+") || str1.equals("-"))
+        {
+            if (str2.equals("("))
+            {
+                return true;
+            }
+        }
+        return false;
+    } 
 }

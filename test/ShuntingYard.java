@@ -1,0 +1,173 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class ShuntingYard
+{
+    private static Scanner sc;
+
+    // Convert infix to postfix
+    public String infix2postfix(String infix) 
+    {       
+        // Create anew stack, empty String and split String using spaces
+        Stack<String> s = new Stack<String>(); 
+
+        String postfix = ""; 
+
+        String[] tokens = infix.split(" ");
+        // Loop through the expression of tokens using tokens.length
+        for (int i = 0; i < tokens.length; i++) 
+        {
+            // Put the tokens[i] into a String a
+            String a = tokens[i]; 
+            String output = "";
+            
+            if(tokens[i].equals("sin"))
+            {
+               return infix;
+            }
+            else if(tokens[i].equals("tan"))
+            {
+               return infix;
+            }
+            else if(tokens[i].equals("cos"))
+            {
+               return infix;
+            }
+
+            // If the token is a Number Append to output
+            if (isNumb(a)) 
+            { 
+                postfix += a + " "; 
+            } 
+            // Else if it is a operator
+            else if (isOp(a)) 
+            { 
+                // While the Stack is not empty
+                while (s.isEmpty() == false) 
+                {   
+                    // Pop
+                    output = s.pop();
+                    // If precedence is higher 
+                    if (isHigher(a, output)) 
+                    { 
+                        // Push it to the output
+                        s.push(output); 
+                        break; 
+                    } 
+                    // Append to the output
+                    postfix += output + " "; 
+                } 
+                // Push it
+                s.push(a); 
+            } 
+            // If it is a "(" or ")"
+            else if (isParen(a)) 
+            { 
+                // If it is a ")"
+                if (a.equals(")")) 
+                { 
+                    // While the stack is not empty
+                    while (s.isEmpty() == false) 
+                    { 
+                        // Pop
+                        output = s.pop(); 
+                        // If the output equals "("
+                        if (output.equals("(")) 
+                        { 
+                            break; 
+                        } 
+                        // Append to the output
+                        postfix += output + " "; 
+                    } 
+                }
+                // Else push
+                else 
+                    s.push(a); 
+            } 
+        } 
+        // While it is not empty
+        while (s.isEmpty() == false) 
+        { 
+            // Pop and append to the output
+            String o = s.pop(); 
+            postfix += o + " "; 
+        } 
+        // Trim it and return the "answer"
+        postfix = postfix.trim();
+        return postfix; 
+    }
+
+    public static boolean isParen(String str) 
+    { 
+        return str.equals("(") || str.equals(")"); 
+    }
+
+    public static boolean isNumb(String op) 
+    { 
+        try 
+        { 
+            Double.parseDouble(op); 
+            return true; 
+        } 
+        catch (NumberFormatException nfe) 
+        { 
+            return false; 
+        } 
+    } 
+    public static boolean isOp(String str) 
+    { 
+        return str.equals("+") || str.equals("-") || str.equals("*") || str.equals("/"); 
+    } 
+    public static boolean isHigher(String str1, String str2) 
+    { 
+        if (str1.equals("*") || str1.equals("/")) 
+        {
+            if (str2.equals("+") || str2.equals("-")) 
+            {
+                return true;
+            }
+        }
+
+        if (str1.equals("*") || str1.equals("/") || str1.equals("+") || str1.equals("-"))
+        {
+            if (str2.equals("("))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public static void print(String s)
+    {
+    	System.out.print(s);
+    }
+    
+    public static void printLine()
+    {
+    	System.out.println();
+    }
+    
+    public static void main(String[] args)
+    {
+        ShuntingYard a = new ShuntingYard();
+        Postfix b = new Postfix();
+        sc = new Scanner(System.in);
+		  System.out.println
+        ("Thank you for testing...have fun!");
+        String s = null;
+        String c = null;
+        while(c != "0")
+        {
+            print("Please enter expression (spaces between): ");
+            s = sc.nextLine();
+            c = a.infix2postfix(s);
+            printLine();
+            print("Postfix version: " + c);
+            printLine();
+            print("Answer: " + b.eval(c));
+            printLine();
+        }
+        
+    }
+}

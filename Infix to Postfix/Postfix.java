@@ -3,7 +3,6 @@
  * Name: Ryan Peters
  * Class: CS-13 Spring 2014
  * Proff: Barry Brown
- * 
  */
 
 import java.util.Stack;
@@ -11,7 +10,6 @@ import java.lang.Math;
 
 public class Postfix
 {
-    
     public double eval(String expr)
     {
         String[] tokens = expr.split(" ");

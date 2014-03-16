@@ -1,0 +1,12 @@
+{
+  "/Users/rpeters1428/Desktop/Google Drive/SCHOOL/Spring 2014/cs13/i2p/src": {
+    "location": "/Users/rpeters1428/Desktop/Google Drive/SCHOOL/Spring 2014/cs13/i2p/src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027/Users/rpeters1428/Desktop/Google Drive/SCHOOL/Spring 2014/cs13/i2p/src\u0027. Skipped."
+  },
+  "/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/jre/lib/rt.jar": {
+    "coordinate": "jre:jre:zip:call:1.0.0",
+    "location": "/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/jre/lib/rt.jar",
+    "status": "RESOLVED"
+  }
+}
