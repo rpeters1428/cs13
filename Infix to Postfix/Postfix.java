@@ -10,8 +10,10 @@ import java.lang.Math;
 
 public class Postfix
 {
+    // Calculate the postfix version of the expression
     public double eval(String expr)
     {
+        // Take the String and split them up into an array of tokens
         String[] tokens = expr.split(" ");
         Stack<Double> s = new Stack<Double>();
         

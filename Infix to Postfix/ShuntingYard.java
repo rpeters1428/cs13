@@ -1,3 +1,10 @@
+/**
+ * File Name: ShuntingYard.java
+ * Author: Ryan Peters
+ * Date: 3/17/2014
+ * Professor: Barry Brown
+ */
+
 import java.util.Stack;
 
 public class ShuntingYard
@@ -79,12 +86,12 @@ public class ShuntingYard
         postfix = postfix.trim();
         return postfix; 
     }
-    
+    // Check to see if the element is a paren
     public static boolean isParen(String str) 
     { 
         return str.equals("(") || str.equals(")"); 
     }
-    
+    // Check to see if it is a number or not
     public static boolean isNumb(String op) 
     { 
         try 
@@ -97,10 +104,12 @@ public class ShuntingYard
             return false; 
         } 
     } 
+    // Check to see if it's an operator
     public static boolean isOp(String str) 
     { 
-        return str.equals("+") || str.equals("-") || str.equals("*") || str.equals("/"); 
+        return str.equals("+") || str.equals("-") || str.equals("*") || str.equals("/");
     } 
+    // Check to see if it is a higher priority in the calc of the expression
     public static boolean isHigher(String str1, String str2) 
     { 
         if (str1.equals("*") || str1.equals("/")) 

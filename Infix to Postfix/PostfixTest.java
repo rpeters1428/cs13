@@ -25,6 +25,7 @@ public class PostfixTest
         assertEquals( -11.14, p.eval("-3 -5 + 3.14 -"), 0.00001);
         assertEquals( 65536.0 , p.eval("4 8 ^"), 0.000001);
         assertEquals( 65524.86 , p.eval("-3 -5 + 3.14 - 4 8 ^ +"), 0.000001);
+        assertEquals( 22.714285714285715, p.eval("3 5 7 / 3 4 2 / * + 16 +"), 0.000001);
     }
 }
 
